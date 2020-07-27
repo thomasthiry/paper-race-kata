@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Xunit;
 
 namespace PaperRaceKata
@@ -48,9 +49,7 @@ namespace PaperRaceKata
 
         public void Adjust(Adjustment adjustment)
         {
-            if(adjustment == Adjustment.East) Inertia = new Vector(1,0);
-            if(adjustment == Adjustment.West) Inertia = new Vector(-1,0);
-            if(adjustment == Adjustment.NorthEast) Inertia = new Vector(1,1);
+            Inertia = Vector.Adjust(adjustment);
         }
     }
 
@@ -58,6 +57,17 @@ namespace PaperRaceKata
     {
         private readonly int _x;
         private readonly int _y;
+
+        public static Vector Adjust(Adjustment adjustment)
+        {
+            return adjustment switch
+            {
+                Adjustment.East => new Vector(1, 0),
+                Adjustment.West => new Vector(-1, 0),
+                Adjustment.NorthEast => new Vector(1, 1),
+                _ => new Vector(0, 0)
+            };
+        }
 
         public Vector(int x, int y)
         {
