@@ -8,7 +8,7 @@ namespace PaperRaceKata
         [Fact]
         public void NewCarHasNoInertia()
         {
-            var car = new Car();
+            var car = new Car(new Vector(0, 0));
             Assert.Equal(new Vector(0,0), car.Inertia);
         }
 
@@ -19,7 +19,7 @@ namespace PaperRaceKata
         [InlineData(Adjustment.NorthEast, 1, 1)]
         public void WhenAdjustingInADirectionTheInertiaOfTheCarPullsInThatDirection(Adjustment adjustment, int x, int y)
         {
-            var car = new Car();
+            var car = new Car(new Vector(0, 0));
             car.Adjust(adjustment);
             Assert.Equal(new Vector(x,y), car.Inertia);
         }
@@ -27,10 +27,18 @@ namespace PaperRaceKata
         [Fact]
         public void WhenAdjustingWestTwiceThenTheInertiaOfTheCarPullsWestTwice()
         {
-            var car = new Car();
+            var car = new Car(new Vector(0, 0));
             car.Adjust(Adjustment.West);
             car.Adjust(Adjustment.West);
             Assert.Equal(new Vector(-2,0), car.Inertia);
+        }
+
+        [Fact]
+        public void WhenAdjustingACarWithInertiaThenAdjustmentIsAddedToInertia()
+        {
+            var car = new Car(new Vector(-1,-1));
+            car.Adjust(Adjustment.West);
+            Assert.Equal(new Vector(-2,-1), car.Inertia);
         }
     }
 
@@ -44,7 +52,12 @@ namespace PaperRaceKata
 
     public class Car
     {
-        public Vector Inertia { get; private set; } = new Vector(0, 0);
+        public Car(Vector inertia)
+        {
+            Inertia = inertia;
+        }
+
+        public Vector Inertia { get; private set; }
 
         public void Adjust(Adjustment adjustment)
         {
