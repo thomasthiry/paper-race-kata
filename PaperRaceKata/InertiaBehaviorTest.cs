@@ -29,21 +29,31 @@ namespace PaperRaceKata
             var car = new Car();
             Assert.Equal(new Vector(0,0), car.Inertia);
         }
+
+        [Fact]
+        public void WhenAdjustWestTheInertiaOfTheCarPullsWest()
+        {
+            var car = new Car();
+            car.Adjust(Adjustment.West);
+            Assert.Equal(new Vector(-1,0), car.Inertia);
+        }
     }
 
     public enum Adjustment
     {
         Center,
-        East
+        East,
+        West
     }
 
     public class Car
     {
-        public Vector Inertia { get; set; } = new Vector(0, 0);
+        public Vector Inertia { get; private set; } = new Vector(0, 0);
 
         public void Adjust(Adjustment adjustment)
         {
             if(adjustment == Adjustment.East) Inertia = new Vector(1,0);
+            if(adjustment == Adjustment.West) Inertia = new Vector(-1,0);
         }
     }
 
