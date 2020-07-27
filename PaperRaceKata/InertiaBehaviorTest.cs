@@ -1,21 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using Xunit;
 
 namespace PaperRaceKata
 {
     public class InertiaBehaviorTest
     {
-        [Fact]
-        public void WhenAdjustCenterTheInertiaOfTheCarStaysTheSame()
-        {
-            var car = new Car();
-            var initialInertia = car.Inertia;
-            car.Adjust(Adjustment.Center);
-            Assert.Equal(initialInertia, car.Inertia);
-        }
-
         [Fact]
         public void NewCarHasNoInertia()
         {
@@ -24,6 +13,7 @@ namespace PaperRaceKata
         }
 
         [Theory]
+        [InlineData(Adjustment.Center, 0, 0)]
         [InlineData(Adjustment.West, -1, 0)]
         [InlineData(Adjustment.East, 1, 0)]
         [InlineData(Adjustment.NorthEast, 1, 1)]
@@ -49,7 +39,7 @@ namespace PaperRaceKata
 
         public void Adjust(Adjustment adjustment)
         {
-            Inertia = Vector.Adjust(adjustment);
+            Inertia = Vector.DirectionFor(adjustment);
         }
     }
 
@@ -58,7 +48,7 @@ namespace PaperRaceKata
         private readonly int _x;
         private readonly int _y;
 
-        public static Vector Adjust(Adjustment adjustment)
+        public static Vector DirectionFor(Adjustment adjustment)
         {
             return adjustment switch
             {
