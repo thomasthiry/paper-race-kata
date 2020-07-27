@@ -23,6 +23,15 @@ namespace PaperRaceKata
             car.Adjust(adjustment);
             Assert.Equal(new Vector(x,y), car.Inertia);
         }
+
+        [Fact]
+        public void WhenAdjustingWestTwiceThenTheInertiaOfTheCarPullsWestTwice()
+        {
+            var car = new Car();
+            car.Adjust(Adjustment.West);
+            car.Adjust(Adjustment.West);
+            Assert.Equal(new Vector(-2,0), car.Inertia);
+        }
     }
 
     public enum Adjustment
@@ -39,7 +48,7 @@ namespace PaperRaceKata
 
         public void Adjust(Adjustment adjustment)
         {
-            Inertia = Vector.DirectionFor(adjustment);
+            Inertia = Inertia.Add(Vector.DirectionFor(adjustment));
         }
     }
 
@@ -93,6 +102,11 @@ namespace PaperRaceKata
         public static bool operator !=(Vector left, Vector right)
         {
             return !Equals(left, right);
+        }
+
+        public Vector Add(Vector other)
+        {
+            return new Vector(this._x + other._x, this._y + other._y); 
         }
     }
 }
