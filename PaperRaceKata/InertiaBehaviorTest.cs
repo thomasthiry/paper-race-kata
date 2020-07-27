@@ -22,6 +22,13 @@ namespace PaperRaceKata
             car.Adjust(Adjustment.East);
             Assert.Equal(new Vector(1,0), car.Inertia);
         }
+
+        [Fact]
+        public void NewCarHasNoInertia()
+        {
+            var car = new Car();
+            Assert.Equal(new Vector(0,0), car.Inertia);
+        }
     }
 
     public enum Adjustment
@@ -32,6 +39,10 @@ namespace PaperRaceKata
 
     public class Car
     {
+        public Car()
+        {
+            this.Inertia = new Vector(0,0);
+        }
         public Vector Inertia { get; set; }
 
         public void Adjust(Adjustment adjustment)
