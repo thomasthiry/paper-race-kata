@@ -30,12 +30,13 @@ namespace PaperRaceKata
             Assert.Equal(new Vector(0,0), car.Inertia);
         }
 
-        [Fact]
-        public void WhenAdjustWestTheInertiaOfTheCarPullsWest()
+        [Theory]
+        [InlineData(Adjustment.West, -1, 0)]
+        public void WhenAdjustingInADirectionTheInertiaOfTheCarPullsInThatDirection(Adjustment adjustment, int x, int y)
         {
             var car = new Car();
-            car.Adjust(Adjustment.West);
-            Assert.Equal(new Vector(-1,0), car.Inertia);
+            car.Adjust(adjustment);
+            Assert.Equal(new Vector(x,y), car.Inertia);
         }
     }
 
