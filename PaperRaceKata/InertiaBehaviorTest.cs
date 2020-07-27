@@ -39,11 +39,7 @@ namespace PaperRaceKata
 
     public class Car
     {
-        public Car()
-        {
-            this.Inertia = new Vector(0,0);
-        }
-        public Vector Inertia { get; set; }
+        public Vector Inertia { get; set; } = new Vector(0, 0);
 
         public void Adjust(Adjustment adjustment)
         {
