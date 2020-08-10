@@ -9,7 +9,7 @@ namespace PaperRaceKata
         }
 
         public Inertia Inertia { get; }
-        public Position Position { get; internal set; }
+        public Position Position { get; }
 
         public Car With(Adjustment adjustment)
         {
