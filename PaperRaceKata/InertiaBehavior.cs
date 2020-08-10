@@ -24,7 +24,7 @@ namespace PaperRaceKata
                 .With(new Inertia(0, 0))
                 .Build();
                 
-            var pulledCar = car.With(adjustment);
+            var pulledCar = car.Apply(adjustment);
 
             Assert.Equal(new Inertia(x, y), pulledCar.Inertia);
         }
@@ -35,8 +35,8 @@ namespace PaperRaceKata
             var car = ACar().With(new Inertia(0, 0)).Build();
 
             var pulledCar = car
-                .With(Adjustment.West)
-                .With(Adjustment.West);
+                .Apply(Adjustment.West)
+                .Apply(Adjustment.West);
             
             Assert.Equal(new Inertia(-2, 0), pulledCar.Inertia);
         }
@@ -47,7 +47,7 @@ namespace PaperRaceKata
             var car = ACar().With(new Inertia(-1, -1)).Build();
 
             var pulledCar = car
-                .With(Adjustment.West);
+                .Apply(Adjustment.West);
 
             Assert.Equal(new Inertia(-2, -1), pulledCar.Inertia);
         }

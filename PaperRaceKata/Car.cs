@@ -11,7 +11,7 @@ namespace PaperRaceKata
         public Inertia Inertia { get; }
         public Position Position { get; }
 
-        public Car With(Adjustment adjustment)
+        public Car Apply(Adjustment adjustment)
         {
             return new Car(Inertia.Add(Inertia.DirectionFor(adjustment)), Position);
         }

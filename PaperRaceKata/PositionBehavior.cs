@@ -23,7 +23,7 @@ namespace PaperRaceKata
                     .With(new Inertia(0, 0))
                     .With(expectedPosition)
                     .Build()
-                .With(Adjustment.Center);
+                .Apply(Adjustment.Center);
              
             Assert.Equal(expectedPosition, car.Position);
         }
