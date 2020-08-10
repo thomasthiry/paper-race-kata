@@ -2,12 +2,6 @@ namespace PaperRaceKata
 {
     public class Car
     {
-        public Car(Inertia inertia)
-        {
-            Inertia = inertia;
-            Position = new Position(0, 0);
-        }
-
         public Car(Inertia inertia, Position position)
         {
             Inertia = inertia;
