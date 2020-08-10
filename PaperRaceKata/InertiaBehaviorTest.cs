@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace PaperRaceKata
@@ -6,7 +7,7 @@ namespace PaperRaceKata
     public class InertiaBehaviorTest
     {
         [Fact]
-        public void NewCarHasNoInertia()
+        public void New_car_has_no_inertia()
         {
             var car = new Car(new Vector(0, 0));
             Assert.Equal(new Vector(0,0), car.Inertia);
@@ -17,7 +18,7 @@ namespace PaperRaceKata
         [InlineData(Adjustment.West, -1, 0)]
         [InlineData(Adjustment.East, 1, 0)]
         [InlineData(Adjustment.NorthEast, 1, 1)]
-        public void WhenAdjustingInADirectionTheInertiaOfTheCarPullsInThatDirection(Adjustment adjustment, int x, int y)
+        public void When_adjusting_in_direction_the_inertia_of_the_car_pulls_in_that_direction(Adjustment adjustment, int x, int y)
         {
             var car = new Car(new Vector(0, 0));
             car.Adjust(adjustment);
@@ -25,7 +26,7 @@ namespace PaperRaceKata
         }
 
         [Fact]
-        public void WhenAdjustingWestTwiceThenTheInertiaOfTheCarPullsWestTwice()
+        public void When_adjusting_west_twice_then_the_inertia_of_the_car_pulls_west_twice()
         {
             var car = new Car(new Vector(0, 0));
             car.Adjust(Adjustment.West);
@@ -34,11 +35,19 @@ namespace PaperRaceKata
         }
 
         [Fact]
-        public void WhenAdjustingACarWithInertiaThenAdjustmentIsAddedToInertia()
+        public void When_adjusting_a_car_with_inertia_then_adjustment_is_added_to_inertia()
         {
             var car = new Car(new Vector(-1,-1));
             car.Adjust(Adjustment.West);
             Assert.Equal(new Vector(-2,-1), car.Inertia);
+        }
+
+        [Fact]
+        public void New_car_is_at_position_zero()
+        {
+            var car = new Car(new Vector(-1,-1));
+            
+            Assert.Equal(new Position(0, 0), car.Position);
         }
     }
 
@@ -55,11 +64,13 @@ namespace PaperRaceKata
         public Car(Vector inertia)
         {
             Inertia = inertia;
+            Position = new Position(0, 0);
         }
 
         public Vector Inertia { get; private set; }
+		public Position Position { get; internal set; }
 
-        public void Adjust(Adjustment adjustment)
+		public void Adjust(Adjustment adjustment)
         {
             Inertia = Inertia.Add(Vector.DirectionFor(adjustment));
         }
