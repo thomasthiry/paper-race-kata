@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Xunit;
+using static PaperRaceKata.CarBuilder;
 
 namespace PaperRaceKata
 {
@@ -8,7 +9,7 @@ namespace PaperRaceKata
         [Fact]
         public void New_car_has_no_inertia()
         {
-            var car = new Car(new Inertia(0, 0), new Position(0,0));
+            var car = ACar().With(new Inertia(0, 0)).Build();
             Assert.Equal(new Inertia(0, 0), car.Inertia);
         }
 
@@ -19,26 +20,36 @@ namespace PaperRaceKata
         [InlineData(Adjustment.NorthEast, 1, 1)]
         public void When_adjusting_in_direction_the_inertia_of_the_car_pulls_in_that_direction(Adjustment adjustment, int x, int y)
         {
-            var car = new Car(new Inertia(0, 0), new Position(0,0))
-                .With(adjustment);
-            Assert.Equal(new Inertia(x, y), car.Inertia);
+            var car = ACar()
+                .With(new Inertia(0, 0))
+                .Build();
+                
+            var pulledCar = car.With(adjustment);
+
+            Assert.Equal(new Inertia(x, y), pulledCar.Inertia);
         }
 
         [Fact]
         public void When_adjusting_west_twice_then_the_inertia_of_the_car_pulls_west_twice()
         {
-            var car = new Car(new Inertia(0, 0), new Position(0,0))
+            var car = ACar().With(new Inertia(0, 0)).Build();
+
+            var pulledCar = car
                 .With(Adjustment.West)
                 .With(Adjustment.West);
-            Assert.Equal(new Inertia(-2, 0), car.Inertia);
+            
+            Assert.Equal(new Inertia(-2, 0), pulledCar.Inertia);
         }
 
         [Fact]
         public void When_adjusting_a_car_with_inertia_then_adjustment_is_added_to_inertia()
         {
-            var car = new Car(new Inertia(-1, -1), new Position(0,0))
+            var car = ACar().With(new Inertia(-1, -1)).Build();
+
+            var pulledCar = car
                 .With(Adjustment.West);
-            Assert.Equal(new Inertia(-2, -1), car.Inertia);
+
+            Assert.Equal(new Inertia(-2, -1), pulledCar.Inertia);
         }
 
     }
