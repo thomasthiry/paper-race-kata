@@ -16,12 +16,6 @@ namespace PaperRaceKata
             return this;
         }
 
-        public CarBuilder With(Inertia inertia)
-        {
-            _inertia = inertia;
-            return this;
-        }
-
         public Car Build()
         {
             return new Car(_inertia, _position);

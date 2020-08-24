@@ -5,8 +5,6 @@ namespace PaperRaceKata
 {
     public class InertiaBehavior
     {
-        private static readonly Position InitialPosition = new Position(0, 0);
-
         [Theory]
         [InlineData(Adjustment.Center, 0, 0)]
         [InlineData(Adjustment.North, 0, 1)]

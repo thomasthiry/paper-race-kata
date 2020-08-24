@@ -20,9 +20,8 @@ namespace PaperRaceKata
         {
             var expectedPosition = new Position(1, 1);
             var car = ACar()
-                    .With(new Inertia(0, 0))
-                    .With(expectedPosition)
-                    .Build()
+                .With(expectedPosition)
+                .Build()
                 .Apply(Adjustment.Center);
              
             Assert.Equal(expectedPosition, car.Position);
