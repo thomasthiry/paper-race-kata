@@ -18,11 +18,10 @@ namespace PaperRaceKata
         }
 
         [Theory]
-        [InlineData(Adjustment.Center, 0, 0)]
         [InlineData(Adjustment.West, -2, 0)]
-        //[InlineData(Adjustment.East, 1, 0)]
-        //[InlineData(Adjustment.NorthEast, 1, 1)]
-        public void When_adjusting_in_direction_the_inertia_of_the_car_pulls_in_that_direction(Adjustment adjustment, int x, int y)
+        [InlineData(Adjustment.East, 2, 0)]
+        [InlineData(Adjustment.NorthEast, 2, 2)]
+        public void A_car_has_inertia_in_the_next_move(Adjustment adjustment, int x, int y)
         {
             var car = ACar().Build();
                 
