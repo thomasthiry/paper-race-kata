@@ -5,11 +5,16 @@ namespace PaperRaceKata
 {
     public class InertiaBehavior
     {
+        private static readonly Position InitialPosition = new Position(0,0);
+
         [Fact]
         public void New_car_has_no_inertia()
         {
             var car = ACar().Build();
-            Assert.Equal(new Position(0,0), car.Apply(Adjustment.Center).Position);
+
+            var pulledCar = car.Apply(Adjustment.Center);
+            
+            Assert.Equal(InitialPosition, pulledCar.Position);
         }
 
         [Theory]
