@@ -7,14 +7,16 @@ namespace PaperRaceKata
     {
         private static readonly Position InitialPosition = new Position(0,0);
 
-        [Fact]
-        public void New_car_has_no_inertia()
+        [Theory]
+        [InlineData(Adjustment.West, -1, 0)]
+        [InlineData(Adjustment.Center, 0, 0)]
+        public void New_car_has_no_inertia(Adjustment adjustment, int x, int y)
         {
             var car = ACar().Build();
 
-            var carInNextTurn = car.Apply(Adjustment.Center);
+            var carInNextTurn = car.Apply(adjustment);
             
-            Assert.Equal(InitialPosition, carInNextTurn.Position);
+            Assert.Equal(new Position(x,y), carInNextTurn.Position);
         }
 
         [Theory]
@@ -26,9 +28,9 @@ namespace PaperRaceKata
             var car = ACar().Build();
                 
             var carWithInertia = car.Apply(adjustment);
-            var pulledCar = carWithInertia.Apply(Adjustment.Center);
+            var carWithInertiaApplied = carWithInertia.Apply(Adjustment.Center);
 
-            Assert.Equal(new Position(x, y), pulledCar.Position);
+            Assert.Equal(new Position(x, y), carWithInertiaApplied.Position);
         }
 
         [Fact]
