@@ -36,13 +36,13 @@ namespace PaperRaceKata
         [Fact]
         public void When_adjusting_west_twice_then_the_inertia_of_the_car_pulls_west_twice()
         {
-            var car = ACar().With(new Inertia(0, 0)).Build();
+            var car = ACar().Build();
 
             var pulledCar = car
                 .Apply(Adjustment.West)
                 .Apply(Adjustment.West);
             
-            Assert.Equal(new Inertia(-2, 0), pulledCar.Inertia);
+            Assert.Equal(new Position(-3, 0), pulledCar.Position);
         }
 
         [Fact]
