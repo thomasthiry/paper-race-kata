@@ -2,18 +2,19 @@ namespace PaperRaceKata
 {
     public class Car
     {
+        private readonly Inertia _inertia;
+
         public Car(Inertia inertia, Position position)
         {
-            Inertia = inertia;
+            _inertia = inertia;
             Position = position;
         }
 
-        public Inertia Inertia { get; }
         public Position Position { get; }
 
         public Car Apply(Adjustment adjustment)
         {
-            var inertia = Inertia.Add(Inertia.DirectionFor(adjustment));
+            var inertia = _inertia.Add(Inertia.DirectionFor(adjustment));
             var positionX = Position.x + inertia._x;
             var positionY = Position.y + inertia._y;
             var position = new Position(positionX, positionY);
