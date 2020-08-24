@@ -8,8 +8,8 @@ namespace PaperRaceKata
         [Fact]
         public void New_car_has_no_inertia()
         {
-            var car = ACar().With(new Inertia(0, 0)).Build();
-            Assert.Equal(new Inertia(0, 0), car.Inertia);
+            var car = ACar().Build();
+            Assert.Equal(new Position(0,0), car.Apply(Adjustment.Center).Position);
         }
 
         [Theory]
