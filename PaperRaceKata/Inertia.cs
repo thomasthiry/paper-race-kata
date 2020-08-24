@@ -4,8 +4,8 @@ namespace PaperRaceKata
 {
     public class Inertia : IEquatable<Inertia>
     {
-        private readonly int _x;
-        private readonly int _y;
+        public readonly int _x;
+        public readonly int _y;
 
         public static Inertia DirectionFor(Adjustment adjustment)
         {
