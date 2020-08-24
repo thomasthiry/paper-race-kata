@@ -5,7 +5,7 @@ namespace PaperRaceKata
 {
     public class InertiaBehavior
     {
-        private static readonly Position InitialPosition = new Position(0,0);
+        private static readonly Position InitialPosition = new Position(0, 0);
 
         [Theory]
         [InlineData(Adjustment.West, -1, 0)]
@@ -14,9 +14,9 @@ namespace PaperRaceKata
         {
             var car = ACar().Build();
 
-            var carInNextTurn = car.Apply(adjustment);
-            
-            Assert.Equal(new Position(x,y), carInNextTurn.Position);
+            var carWithInertiaApplied = car.Apply(adjustment);
+
+            Assert.Equal(new Position(x, y), carWithInertiaApplied.Position);
         }
 
         [Theory]
@@ -25,36 +25,24 @@ namespace PaperRaceKata
         [InlineData(Adjustment.NorthEast, 2, 2)]
         public void A_car_has_inertia_in_the_next_move(Adjustment adjustment, int x, int y)
         {
-            var car = ACar().Build();
-                
-            var carWithInertia = car.Apply(adjustment);
-            var carWithInertiaApplied = carWithInertia.Apply(Adjustment.Center);
+            var car = ACar().Build()
+                .Apply(adjustment);
+
+            var carWithInertiaApplied = car.Apply(Adjustment.Center);
 
             Assert.Equal(new Position(x, y), carWithInertiaApplied.Position);
         }
 
         [Fact]
-        public void When_adjusting_west_twice_then_the_inertia_of_the_car_pulls_west_twice()
+        public void A_car_builds_up_inertia_from_previous_moves()
         {
             var car = ACar().Build()
-                    .Apply(Adjustment.West)
-                    .Apply(Adjustment.West);
-
-            var carWithInertiaApplied = car.Apply(Adjustment.Center);
-            
-            Assert.Equal(new Position(-5, 0), carWithInertiaApplied.Position);
-        }
-
-        [Fact]
-        public void When_adjusting_a_car_with_inertia_then_adjustment_is_added_to_inertia()
-        {
-            var car = ACar().With(new Inertia(-1, -1)).Build();
-
-            var pulledCar = car
+                .Apply(Adjustment.West)
                 .Apply(Adjustment.West);
 
-            Assert.Equal(new Inertia(-2, -1), pulledCar.Inertia);
-        }
+            var carWithInertiaApplied = car.Apply(Adjustment.Center);
 
+            Assert.Equal(new Position(-5, 0), carWithInertiaApplied.Position);
+        }
     }
 }
