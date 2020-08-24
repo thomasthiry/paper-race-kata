@@ -16,7 +16,9 @@ namespace PaperRaceKata
                 Adjustment.East => new Inertia(1, 0),
                 Adjustment.SouthEast => new Inertia(1, -1),
                 Adjustment.South => new Inertia(0, -1),
+                Adjustment.SouthWest => new Inertia(-1, -1),
                 Adjustment.West => new Inertia(-1, 0),
+                Adjustment.NorthWest => new Inertia(-1, 1),
                 _ => new Inertia(0, 0)
             };
         }
