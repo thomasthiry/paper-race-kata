@@ -12,9 +12,9 @@ namespace PaperRaceKata
         {
             var car = ACar().Build();
 
-            var pulledCar = car.Apply(Adjustment.Center);
+            var carInNextTurn = car.Apply(Adjustment.Center);
             
-            Assert.Equal(InitialPosition, pulledCar.Position);
+            Assert.Equal(InitialPosition, carInNextTurn.Position);
         }
 
         [Theory]
