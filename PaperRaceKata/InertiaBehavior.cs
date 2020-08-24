@@ -8,8 +8,15 @@ namespace PaperRaceKata
         private static readonly Position InitialPosition = new Position(0, 0);
 
         [Theory]
-        [InlineData(Adjustment.West, -1, 0)]
         [InlineData(Adjustment.Center, 0, 0)]
+        [InlineData(Adjustment.North, 0, 1)]
+        [InlineData(Adjustment.NorthEast, 1, 1)]
+        [InlineData(Adjustment.East, 1, 0)]
+        [InlineData(Adjustment.SouthEast, 1, -1)]
+        [InlineData(Adjustment.South, 0, -1)]
+        [InlineData(Adjustment.SouthWest, -1, -1)]
+        [InlineData(Adjustment.West, -1, 0)]
+        [InlineData(Adjustment.NorthWest, -1, 1)]
         public void New_car_has_no_inertia(Adjustment adjustment, int x, int y)
         {
             var car = ACar().Build();

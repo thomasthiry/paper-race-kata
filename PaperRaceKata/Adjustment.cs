@@ -5,6 +5,11 @@ namespace PaperRaceKata
         Center,
         East,
         West,
-        NorthEast
+        NorthEast,
+        North,
+        South,
+        SouthEast,
+        SouthWest,
+        NorthWest
     }
 }

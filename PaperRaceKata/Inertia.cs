@@ -11,9 +11,12 @@ namespace PaperRaceKata
         {
             return adjustment switch
             {
-                Adjustment.East => new Inertia(1, 0),
-                Adjustment.West => new Inertia(-1, 0),
+                Adjustment.North => new Inertia(0, 1),
                 Adjustment.NorthEast => new Inertia(1, 1),
+                Adjustment.East => new Inertia(1, 0),
+                Adjustment.SouthEast => new Inertia(1, -1),
+                Adjustment.South => new Inertia(0, -1),
+                Adjustment.West => new Inertia(-1, 0),
                 _ => new Inertia(0, 0)
             };
         }
