@@ -6,7 +6,7 @@ namespace PaperRaceKata
     public class PositionBehavior
     {
         [Fact]
-        public void New_car_is_at_position_zero()
+        public void New_car_is_at_start_position()
         {
             var car = ACar()
                 .With(new Position(0,0))
@@ -16,7 +16,7 @@ namespace PaperRaceKata
         }
 
         [Fact]
-        public void Car_without_inertia_and_adjustment_center_remains_at_the_same_location()
+        public void Car_without_inertia_and_with_center_adjustment_remains_at_the_same_location()
         {
             var expectedPosition = new Position(1, 1);
             var car = ACar()

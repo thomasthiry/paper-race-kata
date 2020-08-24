@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace PaperRaceKata
+﻿namespace PaperRaceKata
 {
 	public struct Position
 	{
