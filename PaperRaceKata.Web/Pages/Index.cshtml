@@ -1,10 +1,36 @@
 ﻿@page
-@model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="row">
+        <div class="col-2">Car</div>
+        <div class="col-4"><input type="text" id="carIdInput" /></div>
+    </div>
+    <div class="row">
+        <div class="col-2">Direction</div>
+        <div class="col-4">
+            <select id="directionInput">
+                <option value="North">North</option>
+                <option value="East">East</option>
+                <option value="South">South</option>
+                <option value="West">West</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">
+            <input type="button" id="sendButton" value="Adjust" />
+        </div>
+    </div>
 </div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <ul id="adjustments"></ul>
+    </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/paperRace.js"></script>
