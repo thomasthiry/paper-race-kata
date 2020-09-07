@@ -8,10 +8,10 @@
         <div class="col-2">Direction</div>
         <div class="col-4">
             <select id="directionInput">
-                <option value="North">North</option>
-                <option value="East">East</option>
-                <option value="South">South</option>
-                <option value="West">West</option>
+                @foreach (var adjustment in Enum.GetValues(typeof(Adjustment)))
+                {
+                <option value="@adjustment">@adjustment</option>
+                }
             </select>
         </div>
     </div>

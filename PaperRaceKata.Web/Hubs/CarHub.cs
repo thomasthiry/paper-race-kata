@@ -8,7 +8,7 @@ namespace PaperRaceKata.Web.Hubs
 {
     public class CarHub : Hub
     {
-        public async Task Adjust(string carId, string direction)
+        public async Task Adjust(string carId, Adjustment direction)
         {
             await Clients.All.SendAsync("CarAdjusted", carId, direction);
         }
