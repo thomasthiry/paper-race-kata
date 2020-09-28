@@ -12,6 +12,10 @@ connection.on("CarAdjusted", function (carId, direction, position) {
     document.getElementById("adjustments").appendChild(li);
 });
 
+connection.on("RaceReset", function () {
+    document.getElementById("adjustments").innerHTML = "";
+});
+
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
 }).catch(function (err) {

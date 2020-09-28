@@ -19,7 +19,7 @@ namespace PaperRaceKata.Web.Hubs
         {
             car = new Car(new Inertia(0, 0), new Position(0, 0));
 
-            await Clients.All.SendAsync("CarAdjusted", "", "", car.Position.ToString());
+            await Clients.All.SendAsync("RaceReset");
         }
 
     }
