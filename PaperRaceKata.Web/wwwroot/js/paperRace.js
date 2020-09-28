@@ -26,3 +26,9 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     });
     event.preventDefault();
 });
+
+document.getElementById("resetButton").addEventListener("click", function (event) {
+    connection.invoke("Reset").catch(function (err) {
+        return console.error(err.toString());
+    });
+});
