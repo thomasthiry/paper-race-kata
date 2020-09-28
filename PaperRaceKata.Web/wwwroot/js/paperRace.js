@@ -36,3 +36,10 @@ document.getElementById("resetButton").addEventListener("click", function (event
         return console.error(err.toString());
     });
 });
+
+function adjustDirection(direction) {
+    var carId = document.getElementById("carIdInput").value;
+    connection.invoke("Adjust", carId, direction).catch(function (err) {
+        return console.error(err.toString());
+    });
+}
