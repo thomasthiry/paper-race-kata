@@ -1,3 +1,18 @@
+# 28/09/2020
+
+Like/Learn
+- SignalR, easy once it works
+- Hard reload
+- Babysteps to make it work, even without unit tests it is a good idea
+- Switching on natural points, combined with babysteps
+- Game is a bit playable
+- Collaboration is a bit more fluent
+- Idea explored before we try something new
+- Timer -> Natural switch: less need to take a break before we start the next navigation
+- Good to meet
+- Ideas sometimes get lost if you cannot try immediatly
+- Start machine automatically
+
 # 8/10/2020
 
 - I learned about an immutable Builder (pattern did occur to me yet)
