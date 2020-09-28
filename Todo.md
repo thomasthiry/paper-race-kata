@@ -10,7 +10,5 @@ GOAL: finish the behavior
 - Review the inertia test, to test through the behavior (with position)
 
 
-- Reset button (restart car from 0)
-- Default name
 - Directions as buttons
 - Position as object to javascript
