@@ -6,12 +6,12 @@ namespace PaperRaceKata
 	{
         public override string ToString()
         {
-            return "x: "+x+"  y: "+y;
+            return "x: "+X+"  y: "+Y;
         }
 
         public bool Equals(Position other)
         {
-            return x == other.x && y == other.y;
+            return X == other.X && Y == other.Y;
         }
 
         public override bool Equals(object obj)
@@ -21,16 +21,16 @@ namespace PaperRaceKata
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(x, y);
+            return HashCode.Combine(X, Y);
         }
 
-        public int x;
-		public int y;
+        public int X { get; }
+        public int Y { get; }
 
-		public Position(int x, int y)
+        public Position(int x, int y)
 		{
-			this.x = x;
-			this.y = y;
+			this.X = x;
+			this.Y = y;
 		}
 	}
 }

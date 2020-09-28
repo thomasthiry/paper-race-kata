@@ -15,8 +15,8 @@ namespace PaperRaceKata
         public Car Apply(Adjustment adjustment)
         {
             var inertia = _inertia.Add(Inertia.DirectionFor(adjustment));
-            var positionX = Position.x + inertia._x;
-            var positionY = Position.y + inertia._y;
+            var positionX = Position.X + inertia._x;
+            var positionY = Position.Y + inertia._y;
             var position = new Position(positionX, positionY);
             return new Car(inertia, position);
         }

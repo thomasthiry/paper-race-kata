@@ -3,7 +3,7 @@
 var connection = new signalR.HubConnectionBuilder().withUrl("/carhub").build();
 
 connection.on("CarAdjusted", function (carId, direction, position) {
-    var message = carId + " was adjusted to the " + direction + " at position " + position;
+    var message = carId + " was adjusted to the " + direction + " at position " + position.x + ", " + position.y;
     var li = document.createElement("li");
     li.textContent = message;
     document.getElementById("adjustments").appendChild(li);

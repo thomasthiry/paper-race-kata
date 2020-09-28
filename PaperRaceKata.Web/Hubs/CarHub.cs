@@ -12,7 +12,7 @@ namespace PaperRaceKata.Web.Hubs
         {
             car = car.Apply(direction);
 
-            await Clients.All.SendAsync("CarAdjusted", carId, direction, car.Position.ToString());
+            await Clients.All.SendAsync("CarAdjusted", carId, direction, car.Position);
         }
 
         public async Task Reset()
