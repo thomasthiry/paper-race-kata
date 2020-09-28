@@ -4,6 +4,11 @@ namespace PaperRaceKata
 {
 	public struct Position
 	{
+        public override string ToString()
+        {
+            return "x: "+x+"  y: "+y;
+        }
+
         public bool Equals(Position other)
         {
             return x == other.x && y == other.y;

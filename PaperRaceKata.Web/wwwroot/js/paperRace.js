@@ -5,8 +5,8 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/carhub").build();
 //Disable send button until connection is established
 document.getElementById("sendButton").disabled = true;
 
-connection.on("CarAdjusted", function (carId, direction) {
-    var message = carId + " was adjusted to the " + direction;
+connection.on("CarAdjusted", function (carId, direction, position) {
+    var message = carId + " was adjusted to the " + direction + " at position " + position;
     var li = document.createElement("li");
     li.textContent = message;
     document.getElementById("adjustments").appendChild(li);
