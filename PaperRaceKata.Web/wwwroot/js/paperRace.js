@@ -7,7 +7,18 @@ connection.on("CarAdjusted", function (carId, direction, position) {
     var li = document.createElement("li");
     li.textContent = message;
     document.getElementById("adjustments").appendChild(li);
+
+    drawCar(position);
 });
+
+function drawCar(position) {
+    var canvas = document.getElementById('track');
+    var ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = 'rgb(200, 0, 0)';
+    ctx.fillRect(300 + 10*position.x, 300 + 10*position.y, 10, 10);
+}
+
 
 connection.on("RaceReset", function () {
     document.getElementById("adjustments").innerHTML = "";
@@ -29,9 +40,3 @@ function adjustDirection(direction) {
         return console.error(err.toString());
     });
 }
-
-var canvas = document.getElementById('track');
-var ctx = canvas.getContext('2d');
-
-ctx.fillStyle = 'rgb(200, 0, 0)';
-ctx.fillRect(10, 10, 50, 50);
