@@ -70,3 +70,25 @@ Like/Learn
 * curious 
 	to see if researching together is interesting enough
 
+
+
+# 19/10/2020
+
+* liked:
+	It works! It moves!
+	Timer worked nicely.
+	Had a lot of fun!
+	Researching stuff was fun.
+	Question to go with canvas or not
+	Spending a lot of time --> took less nice solution but learned about canvas
+	Working in MOB leads to recharge
+	The way we switched, not sure if we need a timer anymore 
+	Timer was there, but not religious about it
+
+
+* learned:
+	Draw a canvas, and clear it
+	Defaulting to action works
+	Some things go better seperate (like research onload) --> Have to try someone jumping out, path merges again.
+	Look into meeting --> Let everyone in without host
+	Lot of issues with Mac / Intellij

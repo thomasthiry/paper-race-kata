@@ -20,7 +20,6 @@ function drawCar(position) {
     ctx.fillRect(300 + 10*position.x, 300 - 10*position.y, 10, 10);
 }
 
-
 connection.on("RaceReset", function () {
     document.getElementById("adjustments").innerHTML = "";
 });
