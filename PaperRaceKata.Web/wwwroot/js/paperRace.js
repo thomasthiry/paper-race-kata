@@ -15,6 +15,7 @@ function drawCar(position) {
     var canvas = document.getElementById('track');
     var ctx = canvas.getContext('2d');
 
+    ctx.clearRect(0, 0, 600, 600);
     ctx.fillStyle = 'rgb(200, 0, 0)';
     ctx.fillRect(300 + 10*position.x, 300 - 10*position.y, 10, 10);
 }
