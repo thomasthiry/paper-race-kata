@@ -2,6 +2,8 @@
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/carhub").build();
 
+connection.onCreate( () => console.log)
+
 connection.on("CarAdjusted", function (carId, direction, position) {
     var message = carId + " was adjusted to the " + direction + " at position " + position.x + ", " + position.y;
     var li = document.createElement("li");
@@ -24,7 +26,9 @@ connection.on("RaceReset", function () {
     document.getElementById("adjustments").innerHTML = "";
 });
 
-connection.start().catch(function (err) {
+connection.start()
+    .then( (args) => console.log(`args`) )
+    .catch(function (err) {
     return console.error(err.toString());
 });
 

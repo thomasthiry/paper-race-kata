@@ -12,15 +12,16 @@ GOAL: finish the behavior
 
 Options:
 - Reverse log
-- Game has a finish point
-- Visualise the game
-- Multiplayer -> Each player plays at his turn (introduce turns)
-
 - Github actions
 - Experiment with Jetbrains all together
 
-Goal of today: minimal visualisation
 
-- show a finite grid
-- fill a square on the grid for the car
-- Add rules for borders, etc.
+Goal of the day:
+
+Options:
+- Multiplayer -> Each player plays at his turn (introduce turns)
+- Single player:
+  - Scaling is a bit wrong
+  - play with keys
+  - Add rules for borders, etc.
+  - Game has a finish point

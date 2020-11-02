@@ -8,6 +8,11 @@ namespace PaperRaceKata.Web.Hubs
 
         private static Car car = new Car(new Inertia(0,0), new Position(0,0));
 
+        public override async Task OnConnectedAsync()
+        {
+            await Clients.Caller.SendAsync("CarAdjusted", "red car", Adjustment.Center, car.Position);
+        }
+
         public async Task Adjust(string carId, Adjustment direction)
         {
             car = car.Apply(direction);
@@ -21,6 +26,5 @@ namespace PaperRaceKata.Web.Hubs
 
             await Clients.All.SendAsync("RaceReset");
         }
-
     }
 }
