@@ -42,14 +42,15 @@ function drawCars() {
     var carIds = Object.keys(cars);
 
     for (var i = 0; i < carIds.length; i++) {
-        var position = cars[carIds[i]];
-        drawOneCar(ctx, position);
+        var carId = carIds[i];
+        var position = cars[carId];
+        drawOneCar(ctx, carId, position);
     }
 
 }
 
-function drawOneCar(ctx, position) {
-    ctx.fillStyle = 'rgb(200, 0, 0)';
+function drawOneCar(ctx, carId, position) {
+    ctx.fillStyle = carId == 'red' ? 'rgb(200, 0, 0)': 'rgb(0, 0, 200)';
     ctx.fillRect(300 + 10 * position.x, 300 - 10 * position.y, 10, 10);
 }
 
