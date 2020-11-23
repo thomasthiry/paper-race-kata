@@ -17,25 +17,39 @@ connection.on("CarAdjusted", function (carId, direction, position) {
     li.textContent = message;
     document.getElementById("adjustments").appendChild(li);
 
-    drawCar(position);
+    cars[carId] = position;
+    drawCars();
 });
+
+var cars = {};
 
 connection.on("CarJoined", function (carId, position) {
     var message = carId + " joined at position " + position.x + ", " + position.y;
     var li = document.createElement("li");
     li.textContent = message;
     document.getElementById("adjustments").appendChild(li);
-
-    drawCar(position);
+    cars[carId] = position;
+    drawCars();
 });
 
-function drawCar(position) {
+function drawCars() {
     var canvas = document.getElementById('track');
     var ctx = canvas.getContext('2d');
 
     ctx.clearRect(0, 0, 600, 600);
+
+    var carIds = Object.keys(cars);
+
+    for (var i = 0; i < carIds.length; i++) {
+        var position = cars[carIds[i]];
+        drawOneCar(ctx, position);
+    }
+
+}
+
+function drawOneCar(ctx, position) {
     ctx.fillStyle = 'rgb(200, 0, 0)';
-    ctx.fillRect(300 + 10*position.x, 300 - 10*position.y, 10, 10);
+    ctx.fillRect(300 + 10 * position.x, 300 - 10 * position.y, 10, 10);
 }
 
 connection.on("RaceReset", function () {
