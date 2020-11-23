@@ -1,9 +1,10 @@
 ﻿"use strict";
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/carhub").build();
+var carId;
 
-function joinGame() {
-    var carId = document.getElementById("carIdInput").value;
+function joinGame(myCarId) {
+    carId = myCarId;
     connection.start()
         .then(() => connection.invoke("JoinGame", carId))
         .catch(function (err) {
@@ -63,7 +64,6 @@ document.getElementById("resetButton").addEventListener("click", function (event
 });
 
 function adjustDirection(direction) {
-    var carId = document.getElementById("carIdInput").value;
     connection.invoke("Adjust", carId, direction).catch(function (err) {
         return console.error(err.toString());
     });
