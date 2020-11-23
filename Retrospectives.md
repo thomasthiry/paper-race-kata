@@ -110,3 +110,16 @@ Learn
 - Compared to normal mobbing this is a lot harder (tech setup, used to work together, know the system, in the flow) --> Nelis and Matteo
 - Timer was annoying this time
 
+2020-11-23: MOB
+
+Present: JM, Matteo, Thomas and Olivier
+
+Like:
++ we have two cars moving +1
++ team <3 +2
++ natural switch -1
+
+Learn:
++ cards are not car :D
++ Javascript is not helping to avoid small mistakes (typo car to card)
++ natural switch disengage people
