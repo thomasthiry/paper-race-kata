@@ -25,3 +25,9 @@ Options:
   - play with keys
   - Add rules for borders, etc.
   - Game has a finish point
+
+
+#Todo 23/11/2020
+- Multiplayer: two dots moving separately
+- Different colors
+- Auto assign color at join

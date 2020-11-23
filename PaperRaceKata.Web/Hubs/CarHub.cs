@@ -13,6 +13,10 @@ namespace PaperRaceKata.Web.Hubs
             await Clients.Caller.SendAsync("CarAdjusted", "red car", Adjustment.Center, car.Position);
         }
 
+        public async Task JoinGame(string carId)
+        {
+            await Clients.All.SendAsync("CarJoined", carId, car.Position);
+        }
         public async Task Adjust(string carId, Adjustment direction)
         {
             car = car.Apply(direction);

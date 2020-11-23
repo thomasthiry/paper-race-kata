@@ -2,10 +2,26 @@
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/carhub").build();
 
-connection.onCreate( () => console.log)
+function joinGame() {
+    var carId = document.getElementById("carIdInput").value;
+    connection.start()
+        .then(() => connection.invoke("JoinGame", carId))
+        .catch(function (err) {
+            return console.error(err.toString());
+        });
+}
 
 connection.on("CarAdjusted", function (carId, direction, position) {
     var message = carId + " was adjusted to the " + direction + " at position " + position.x + ", " + position.y;
+    var li = document.createElement("li");
+    li.textContent = message;
+    document.getElementById("adjustments").appendChild(li);
+
+    drawCar(position);
+});
+
+connection.on("CarJoined", function (carId, position) {
+    var message = carId + " joined at position " + position.x + ", " + position.y;
     var li = document.createElement("li");
     li.textContent = message;
     document.getElementById("adjustments").appendChild(li);
@@ -24,12 +40,6 @@ function drawCar(position) {
 
 connection.on("RaceReset", function () {
     document.getElementById("adjustments").innerHTML = "";
-});
-
-connection.start()
-    .then( (args) => console.log(`args`) )
-    .catch(function (err) {
-    return console.error(err.toString());
 });
 
 document.getElementById("resetButton").addEventListener("click", function (event) {

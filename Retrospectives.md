@@ -92,3 +92,21 @@ Like/Learn
 	Some things go better seperate (like research onload) --> Have to try someone jumping out, path merges again.
 	Look into meeting --> Let everyone in without host
 	Lot of issues with Mac / Intellij
+
+
+2020-11-2: MOB
+
+Present: JM, Matteo, Nelis
+
+Like:
++ work
++ 3
++ simple solution
+
+Learn
+- Small steps help to isolate the problem
+- Smaller teams works better
+- I cannot get used to the windows / anydesk setup
+- Compared to normal mobbing this is a lot harder (tech setup, used to work together, know the system, in the flow) --> Nelis and Matteo
+- Timer was annoying this time
+
